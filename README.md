@@ -24,4 +24,8 @@ Activate the venv: `source .venv/bin/activate` (Linux/macOS) or `.venv\Scripts\A
 uv add <package-name>
 ```
 
-PyTorch is installed from the ROCm 6.0 index (see `pyproject.toml`); other packages come from PyPI.
+PyTorch is installed from a ROCm index (see `pyproject.toml`); other packages come from PyPI.
+
+## Troubleshooting (AMD / ROCm)
+
+**`HIP error: invalid device function`** — The PyTorch ROCm wheel was built for different GPU architectures than yours (e.g. RX 7800 XT is gfx1101). Use a newer index that supports your arch: in `pyproject.toml`, change the PyTorch index URL to `https://download.pytorch.org/whl/rocm6.4` (or the latest ROCm version listed on [pytorch.org](https://pytorch.org)), then run `uv sync` again.

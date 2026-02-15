@@ -9,14 +9,8 @@ dependencies = [
     "torch",
     "torchvision",
     "torchaudio",
+    "markupsafe>=2.0,<3.0",  # pin so resolver takes from PyPI (rocm index has only 3.0.2 cp313)
 ]
 
-[tool.uv.sources]
-torch = { index = "pytorch-rocm" }
-torchvision = { index = "pytorch-rocm" }
-torchaudio = { index = "pytorch-rocm" }
-
-[[tool.uv.index]]
-name = "pytorch-rocm"
-url = "https://download.pytorch.org/whl/rocm6.0"
-explicit = true
+[tool.uv]
+extra-index-url = ["https://download.pytorch.org/whl/rocm6.4"]
